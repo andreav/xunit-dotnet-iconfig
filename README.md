@@ -1,6 +1,6 @@
 # Needing dotnet IConfiguration inside xUnit.net tests
 
-* Create xunit project and oackages
+* Create xunit project and packages
     
         dotnet new xunit --name xunit-dotnet-iconfig
         cd xunit-dotnet-iconfig
@@ -33,7 +33,7 @@ _Note: In this project it is commited just for demostration purposes._
 * When debugging your code you will use your appsetting + appsetting.local
 
 * When you deploy your code (i.e. to your CI/CD pipeline) you can grab sensitive data from environment
-  You ca test this behaviour also locally setting env vars inline when runnign tests, for instance like this (bash):
+  You ca test this behavior also locally setting env vars inline when running tests, for instance like this (bash):
 
     ```          
     MyApp__Auth__TICKETOFFICE__UserName="override_secret" dotnet test
@@ -53,7 +53,7 @@ _Note: In this project it is commited just for demostration purposes._
         <UserSecretsId>your-secret-id-here</UserSecretsId>
         ```
 
-    * Configuring also Secrets in `TestConfigHelper.cs` (default code is commented out), somethind like this:
+    * Configuring also Secrets in `TestConfigHelper.cs` (default code is commented out), something like this:
 
         ```cs
         public static IConfigurationRoot GetIConfigurationRoot()
