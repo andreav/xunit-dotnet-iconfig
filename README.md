@@ -10,12 +10,12 @@
         dotnet add package Microsoft.Extensions.Configuration.EnvironmentVariables
         dotnet add package Microsoft.Extensions.Configuration.UserSecrets        
 
-* Create `appsetting.json` file (you can commit it, but without sensitive data). Here you put your config and placeholders for sensitive data)
+* Create `appsettings.json` file (you can commit it, but without sensitive data). Here you put your config and placeholders for sensitive data)
 
-* Create `appsetting.local.json` file (you must not commit it, .gitignore ). Here you put you sensitive data (overriding placeholders)  
-_Note: In this project it is commited just for demostration purposes._
+* Create `appsettings.local.json` file (you must not commit it, .gitignore ). Here you put you sensitive data (overriding placeholders)  
+_Note: In this project it is committed just for demonstration purposes._
 
-* Copy to output directory `appsetting.json` and `appsetting.local.json` by adding these lines to `.csproj` file:
+* Copy to output directory `appsettings.json` and `appsettings.local.json` by adding these lines to `.csproj` file:
 
     ```xml
     <ItemGroup Condition="'$(Configuration)' == 'Debug'">
@@ -28,9 +28,9 @@ _Note: In this project it is commited just for demostration purposes._
 
 * Create an Utilty class (`TestConfigHelper`) for setting up IConfiguration in every test and binding configuration to your config object (adjust as needed)
 
-* Your test should inherit from a BaseTestClass which load configuration
+* Your test should inherit from a BaseTestClass which loads configuration
 
-* When debugging your code you will use your appsetting + appsetting.local
+* When debugging your code you will use your appsettings + appsettings.local
 
 * When you deploy your code (i.e. to your CI/CD pipeline) you can grab sensitive data from environment
   You ca test this behavior also locally setting env vars inline when running tests, for instance like this (bash):
@@ -39,15 +39,15 @@ _Note: In this project it is commited just for demostration purposes._
     MyApp__Auth__TICKETOFFICE__UserName="override_secret" dotnet test
     ```
 
-* Optionally you can configure a user secrets if managing more sensitive data. This requires some more configuration.
-    * Creating anc setting a secret
+* Moreover, for local development, you can configure user secrets. This requires some more configuration.
+    * Creating and setting a secret
 
         ```
         dotnet user-secrets init
         dotnet user-secrets set key value
         ```
     
-    * Adding the secrets key to the `.csproj` file:
+    * Adding the user secrets key to the `.csproj` file:
 
         ```xml
         <UserSecretsId>your-secret-id-here</UserSecretsId>
